@@ -21,7 +21,7 @@ let ProjectsService = class ProjectsService {
     async vlaidateMembers(members) {
         const userIds = members.map((e) => e.id);
         if (new Set(userIds).size !== userIds.length) {
-            throw new common_1.BadRequestException('Members must be unique');
+            throw new common_1.BadRequestException("Members must be unique");
         }
         const usersPromises = members.map((e) => this.usersService.findOne({
             id: e.id,
@@ -64,7 +64,7 @@ let ProjectsService = class ProjectsService {
             throw new common_1.HttpException({
                 status: common_1.HttpStatus.UNPROCESSABLE_ENTITY,
                 errors: {
-                    id: 'Project doesnt exist',
+                    id: "Project doesnt exist",
                 },
             }, common_1.HttpStatus.UNPROCESSABLE_ENTITY);
         }

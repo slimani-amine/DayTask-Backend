@@ -26,12 +26,12 @@ class CreateTaskDto {
 }
 exports.CreateTaskDto = CreateTaskDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Task title' }),
+    (0, swagger_1.ApiProperty)({ example: "Task title" }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateTaskDto.prototype, "title", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Task description' }),
+    (0, swagger_1.ApiProperty)({ example: "Task description" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
@@ -46,7 +46,7 @@ __decorate([
     __metadata("design:type", project_1.Project)
 ], CreateTaskDto.prototype, "project", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '2024-04-05T14:30:00Z' }),
+    (0, swagger_1.ApiProperty)({ example: "2024-04-05T14:30:00Z" }),
     (0, class_validator_1.IsDateString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
@@ -56,7 +56,7 @@ __decorate([
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.ArrayNotEmpty)(),
     (0, class_validator_1.Validate)(create_project_dto_1.IsUserConstraint, { each: true }),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], CreateTaskDto.prototype, "members", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ example: false }),
@@ -65,13 +65,13 @@ __decorate([
     __metadata("design:type", Boolean)
 ], CreateTaskDto.prototype, "completed", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '2024-04-05T14:30:00Z' }),
+    (0, swagger_1.ApiProperty)({ example: "2024-04-05T14:30:00Z" }),
     (0, class_validator_1.IsDateString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
 ], CreateTaskDto.prototype, "completedAt", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '2024-04-05T14:30:00Z' }),
+    (0, swagger_1.ApiProperty)({ example: "2024-04-05T14:30:00Z" }),
     (0, class_validator_1.IsDateString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)

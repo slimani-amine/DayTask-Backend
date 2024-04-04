@@ -13,6 +13,7 @@ exports.CreateMessageDto = exports.IsChatConstraint = exports.IsMessageType = vo
 const class_validator_1 = require("class-validator");
 const message_1 = require("../domain/message");
 const chat_1 = require("../../chat/domain/chat");
+const swagger_1 = require("@nestjs/swagger");
 let IsMessageType = class IsMessageType {
     validate(value) {
         return Object.values(message_1.MessageTypes).includes(value);
@@ -23,19 +24,19 @@ let IsMessageType = class IsMessageType {
 };
 exports.IsMessageType = IsMessageType;
 exports.IsMessageType = IsMessageType = __decorate([
-    (0, class_validator_1.ValidatorConstraint)({ name: 'isMessageType', async: false })
+    (0, class_validator_1.ValidatorConstraint)({ name: "isMessageType", async: false })
 ], IsMessageType);
 let IsChatConstraint = class IsChatConstraint {
     validate(chat) {
-        return chat && typeof chat.id === 'number';
+        return chat && typeof chat.id === "number";
     }
     defaultMessage() {
-        return 'Each chat must be a user object with a numeric id';
+        return "Each chat must be a user object with a numeric id";
     }
 };
 exports.IsChatConstraint = IsChatConstraint;
 exports.IsChatConstraint = IsChatConstraint = __decorate([
-    (0, class_validator_1.ValidatorConstraint)({ name: 'IsChatConstraint', async: false })
+    (0, class_validator_1.ValidatorConstraint)({ name: "IsChatConstraint", async: false })
 ], IsChatConstraint);
 class CreateMessageDto {
     constructor() {
@@ -44,21 +45,25 @@ class CreateMessageDto {
 }
 exports.CreateMessageDto = CreateMessageDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: "Good morning" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMessageDto.prototype, "content", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.Validate)(IsMessageType),
     __metadata("design:type", String)
 ], CreateMessageDto.prototype, "type", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.Validate)(IsChatConstraint),
     __metadata("design:type", chat_1.Chat)
 ], CreateMessageDto.prototype, "chat", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], CreateMessageDto.prototype, "seen", void 0);

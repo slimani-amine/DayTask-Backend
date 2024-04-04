@@ -7,54 +7,54 @@ import {
   IsNumber,
   ArrayNotEmpty,
   Validate,
-} from 'class-validator';
-import { IsUserConstraint } from 'src/routes/projects/dto/create-project.dto';
-import { ProjectEntity } from 'src/routes/projects/infastructure/persistence/relational/entities/project.entity';
-import { User } from 'src/routes/users/domain/user';
-import { Task } from '../domain/task';
-import { Exclude } from 'class-transformer';
-import { GeneralDomainKeysWithId } from 'src/shared/domain/general.domain';
-import { Project } from '../../projects/domain/project';
-import { ApiProperty } from '@nestjs/swagger';
+} from "class-validator";
+import { IsUserConstraint } from "src/routes/projects/dto/create-project.dto";
+import { ProjectEntity } from "src/routes/projects/infastructure/persistence/relational/entities/project.entity";
+import { User } from "src/routes/users/domain/user";
+import { Task } from "../domain/task";
+import { Exclude } from "class-transformer";
+import { GeneralDomainKeysWithId } from "src/shared/domain/general.domain";
+import { Project } from "../../projects/domain/project";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateTaskDto implements Omit<Task, GeneralDomainKeysWithId> {
-  @ApiProperty({ example: 'Task title' })
+  @ApiProperty({ example: "Task title" })
   @IsString()
   title: string;
 
-  @ApiProperty({ example: 'Task description' })
+  @ApiProperty({ example: "Task description" })
   @IsString()
   @IsOptional()
   description: string | null = null;
 
   @ApiProperty({ example: 1 })
   @IsNumber()
-  projectId: ProjectEntity['id'];
+  projectId: ProjectEntity["id"];
   @Exclude()
-  project: Project;
+  project?: Project;
 
-  @ApiProperty({ example: '2024-04-05T14:30:00Z' })
+  @ApiProperty({ example: "2024-04-05T14:30:00Z" })
   @IsDateString()
   @IsOptional()
-  due_date: Date | null = null;
+  due_date: Date | string | null = null;
 
   @ApiProperty()
   @IsArray()
   @ArrayNotEmpty()
   @Validate(IsUserConstraint, { each: true })
-  members: User[];
+  members;
 
   @ApiProperty({ example: false })
   @IsBoolean()
   @IsOptional()
   completed: boolean = false;
 
-  @ApiProperty({ example: '2024-04-05T14:30:00Z' })
+  @ApiProperty({ example: "2024-04-05T14:30:00Z" })
   @IsDateString()
   @IsOptional()
   completedAt: Date | null = null;
 
-  @ApiProperty({ example: '2024-04-05T14:30:00Z' })
+  @ApiProperty({ example: "2024-04-05T14:30:00Z" })
   @IsDateString()
   @IsOptional()
   startedAt: Date | null = null;

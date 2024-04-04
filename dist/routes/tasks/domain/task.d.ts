@@ -5,11 +5,11 @@ export declare class Task extends GeneralDomain {
     id: number;
     title: string;
     description: string | null;
-    project: Project;
+    project?: Project;
     projectId?: number;
     members: User[];
     completed: boolean;
     completedAt: Date | null;
-    due_date: Date | null;
+    due_date: Date | string | null;
     startedAt: Date | null;
 }

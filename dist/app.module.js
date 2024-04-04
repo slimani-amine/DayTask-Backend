@@ -24,7 +24,6 @@ const i18n_module_1 = require("nestjs-i18n/dist/i18n.module");
 const nestjs_i18n_1 = require("nestjs-i18n");
 const typeorm_config_service_1 = require("./database/typeorm-config.service");
 const mail_module_1 = require("./mail/mail.module");
-const home_module_1 = require("./home/home.module");
 const typeorm_2 = require("typeorm");
 const mailer_module_1 = require("./mailer/mailer.module");
 const file_config_1 = __importDefault(require("./routes/files/config/file.config"));
@@ -38,6 +37,7 @@ const message_module_1 = require("./routes/messages/message.module");
 const notifications_module_1 = require("./routes/notifications/notifications.module");
 const messages_socket_module_1 = require("./routes/messages/socket/messages-socket.module");
 const notifications_socket_module_1 = require("./routes/notifications/socket/notifications-socket.module");
+const home_module_1 = require("./routes/home/home.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;

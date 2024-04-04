@@ -112,6 +112,7 @@ __decorate([
 ], MessageController.prototype, "remove", null);
 exports.MessageController = MessageController = __decorate([
     (0, swagger_1.ApiTags)('messages'),
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt'), roles_guard_1.RolesGuard),
     (0, common_1.Controller)({ path: 'messages', version: '1' }),
     __metadata("design:paramtypes", [Message_service_1.MessageService,

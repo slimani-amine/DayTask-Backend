@@ -100,6 +100,7 @@ __decorate([
 ], TasksController.prototype, "remove", null);
 exports.TasksController = TasksController = __decorate([
     (0, swagger_1.ApiTags)('tasks'),
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt'), roles_guard_1.RolesGuard),
     (0, common_1.Controller)({ path: 'tasks', version: '1' }),
     __metadata("design:paramtypes", [tasks_service_1.TasksService])

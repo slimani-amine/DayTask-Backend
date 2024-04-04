@@ -100,6 +100,7 @@ __decorate([
 ], ProjectsController.prototype, "remove", null);
 exports.ProjectsController = ProjectsController = __decorate([
     (0, swagger_1.ApiTags)('projects'),
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt'), roles_guard_1.RolesGuard),
     (0, common_1.Controller)({ path: 'projects', version: '1' }),
     __metadata("design:paramtypes", [projects_service_1.ProjectsService])

@@ -86,9 +86,9 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.SerializeOptions)({
-        groups: ['me'],
+        groups: ["me"],
     }),
-    (0, common_1.Post)('email/login'),
+    (0, common_1.Post)("email/login"),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -96,39 +96,40 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
-    (0, common_1.Post)('email/register'),
+    (0, common_1.Post)("email/register"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_register_login_dto_1.AuthRegisterLoginDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([
-    (0, common_1.Post)('email/confirm'),
+    (0, common_1.Post)("email/confirm"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_confirm_email_dto_1.AuthConfirmEmailDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "confirmEmail", null);
 __decorate([
-    (0, common_1.Post)('forgot/password'),
+    (0, common_1.Post)("forgot/password"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_forgot_password_dto_1.AuthForgotPasswordDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "forgotPassword", null);
 __decorate([
-    (0, common_1.Post)('reset/password'),
+    (0, common_1.Post)("reset/password"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_reset_password_dto_1.AuthResetPasswordDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "resetPassword", null);
 __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.SerializeOptions)({
-        groups: ['me'],
+        groups: ["me"],
     }),
-    (0, common_1.Get)('me'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Get)("me"),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
@@ -136,11 +137,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "me", null);
 __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.SerializeOptions)({
-        groups: ['me'],
+        groups: ["me"],
     }),
-    (0, common_1.Post)('refresh'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt-refresh')),
+    (0, common_1.Post)("refresh"),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt-refresh")),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
@@ -148,19 +150,21 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "refresh", null);
 __decorate([
-    (0, common_1.Post)('logout'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.Post)("logout"),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
     __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
 __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.SerializeOptions)({
-        groups: ['me'],
+        groups: ["me"],
     }),
-    (0, common_1.Patch)('me'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Patch)("me"),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, user_decorator_1.User)()),
     __param(1, (0, common_1.Body)()),
@@ -169,18 +173,19 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)('me'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.Delete)("me"),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
     __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "delete", null);
 exports.AuthController = AuthController = __decorate([
-    (0, swagger_1.ApiTags)('Auth'),
+    (0, swagger_1.ApiTags)("Auth"),
     (0, common_1.Controller)({
-        path: 'auth',
-        version: '1',
+        path: "auth",
+        version: "1",
     }),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);

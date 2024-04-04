@@ -5,7 +5,7 @@ export declare class Project extends GeneralDomain {
     title: string;
     description: string | null;
     members: User[];
-    due_date: Date;
+    due_date: Date | string;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date | null;

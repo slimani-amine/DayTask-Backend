@@ -21,9 +21,10 @@ import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/routes/roles/roles.guard';
 import { InfinityPaginationResultType } from '../../utils/types/infinity-pagination-result.type';
 import { infinityPagination } from '../../utils/infinity-pagination';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('tasks')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller({ path: 'tasks', version: '1' })
 export class TasksController {

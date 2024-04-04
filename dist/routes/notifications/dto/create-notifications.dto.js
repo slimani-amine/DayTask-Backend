@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateNotificationsDto = void 0;
 const class_validator_1 = require("class-validator");
 const create_project_dto_1 = require("../../projects/dto/create-project.dto");
+const swagger_1 = require("@nestjs/swagger");
 class CreateNotificationsDto {
     constructor() {
         this.seen = false;
@@ -19,15 +20,18 @@ class CreateNotificationsDto {
 }
 exports.CreateNotificationsDto = CreateNotificationsDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: "Ali Send a message" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateNotificationsDto.prototype, "content", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], CreateNotificationsDto.prototype, "seen", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.ArrayNotEmpty)(),
     (0, class_validator_1.Validate)(create_project_dto_1.IsUserConstraint, { each: true }),

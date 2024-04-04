@@ -10,25 +10,26 @@ import {
   BadRequestException,
   ParseIntPipe,
   UseGuards,
-} from '@nestjs/common';
+} from "@nestjs/common";
 
-import { successResponse } from 'src/auth/constants/response';
-import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from 'src/routes/roles/roles.guard';
-import { ChatService } from './chat.service';
-import { CreateChatDto } from './dto/create-chat.dto';
-import { QueryChatDto } from './dto/query-chat.dto';
-import { Chat } from './domain/chat';
-import { UpdateChatDto } from './dto/update-chat.dto';
-import { User as UserFromReq } from 'src/shared/decorators/user.decorator';
-import { User } from '../users/domain/user';
-import { ApiTags } from '@nestjs/swagger';
-import { InfinityPaginationResultType } from '../../utils/types/infinity-pagination-result.type';
-import { infinityPagination } from '../../utils/infinity-pagination';
+import { successResponse } from "src/auth/constants/response";
+import { AuthGuard } from "@nestjs/passport";
+import { RolesGuard } from "src/routes/roles/roles.guard";
+import { ChatService } from "./chat.service";
+import { CreateChatDto } from "./dto/create-chat.dto";
+import { QueryChatDto } from "./dto/query-chat.dto";
+import { Chat } from "./domain/chat";
+import { UpdateChatDto } from "./dto/update-chat.dto";
+import { User as UserFromReq } from "src/shared/decorators/user.decorator";
+import { User } from "../users/domain/user";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { InfinityPaginationResultType } from "../../utils/types/infinity-pagination-result.type";
+import { infinityPagination } from "../../utils/infinity-pagination";
 
-@ApiTags('chat')
-@UseGuards(AuthGuard('jwt'), RolesGuard)
-@Controller({ path: 'chat', version: '1' })
+@ApiTags("chat")
+@ApiBearerAuth()
+@UseGuards(AuthGuard("jwt"), RolesGuard)
+@Controller({ path: "chat", version: "1" })
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
@@ -40,7 +41,7 @@ export class ChatController {
   @Get()
   async findAll(
     @Query() query: QueryChatDto,
-    @UserFromReq() user: User,
+    @UserFromReq() user: User
   ): Promise<InfinityPaginationResultType<Chat>> {
     const page = query?.page ?? 1;
     const limit = query?.limit ? (query?.limit > 50 ? 50 : query?.limit) : 10;
@@ -55,7 +56,7 @@ export class ChatController {
           },
           userId: user.id,
         }),
-        { page, limit },
+        { page, limit }
       );
       return data;
     } catch (err) {
@@ -63,21 +64,21 @@ export class ChatController {
     }
   }
 
-  @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number, @UserFromReq() user: User) {
+  @Get(":id")
+  findOne(@Param("id", ParseIntPipe) id: number, @UserFromReq() user: User) {
     return this.chatService.findOne(id, user.id);
   }
 
-  @Patch(':id')
+  @Patch(":id")
   update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateTasktDto: UpdateChatDto,
+    @Param("id", ParseIntPipe) id: number,
+    @Body() updateTasktDto: UpdateChatDto
   ) {
     return this.chatService.update(id, updateTasktDto);
   }
 
-  @Delete(':id')
-  async remove(@Param('id', ParseIntPipe) id: number) {
+  @Delete(":id")
+  async remove(@Param("id", ParseIntPipe) id: number) {
     await this.chatService.remove(id);
     return {
       ...successResponse,

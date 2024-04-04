@@ -14,10 +14,10 @@ const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
 let IsUserConstraint = class IsUserConstraint {
     validate(user) {
-        return user && typeof user.id === 'number';
+        return user && typeof user.id === "number";
     }
     defaultMessage() {
-        return 'Each member must be a user object with a numeric id';
+        return "Each member must be a user object with a numeric id";
     }
 };
 exports.IsUserConstraint = IsUserConstraint;
@@ -28,12 +28,12 @@ class CreateProjectDto {
 }
 exports.CreateProjectDto = CreateProjectDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Project Title' }),
+    (0, swagger_1.ApiProperty)({ example: "Project Title" }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateProjectDto.prototype, "title", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Project Description' }),
+    (0, swagger_1.ApiProperty)({ example: "Project Description" }),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateProjectDto.prototype, "description", void 0);
@@ -42,12 +42,12 @@ __decorate([
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.ArrayNotEmpty)(),
     (0, class_validator_1.Validate)(IsUserConstraint, { each: true }),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], CreateProjectDto.prototype, "members", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '2024-04-05T14:30:00Z' }),
+    (0, swagger_1.ApiProperty)({ example: "2024-04-05T14:30:00Z" }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsDateString)(),
-    __metadata("design:type", Date)
+    __metadata("design:type", Object)
 ], CreateProjectDto.prototype, "due_date", void 0);
 //# sourceMappingURL=create-project.dto.js.map

@@ -26,9 +26,10 @@ import { User } from '../users/domain/user';
 import { MessagesSocketGateway } from './socket/messages-socket.gateway';
 import { InfinityPaginationResultType } from '../../utils/types/infinity-pagination-result.type';
 import { infinityPagination } from '../../utils/infinity-pagination';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('messages')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller({ path: 'messages', version: '1' })
 export class MessageController {

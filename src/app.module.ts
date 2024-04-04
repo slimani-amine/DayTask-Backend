@@ -12,7 +12,6 @@ import { I18nModule } from 'nestjs-i18n/dist/i18n.module';
 import { HeaderResolver } from 'nestjs-i18n';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { MailModule } from './mail/mail.module';
-import { HomeModule } from './home/home.module';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { AllConfigType } from './config/config.type';
 import { MailerModule } from './mailer/mailer.module';
@@ -27,10 +26,7 @@ import { MessageModule } from './routes/messages/message.module';
 import { NotificationModule } from './routes/notifications/notifications.module';
 import { MessagesSocketModule } from './routes/messages/socket/messages-socket.module';
 import { NotificationsSocketModule } from './routes/notifications/socket/notifications-socket.module';
-// import { ChatModule } from './chat/chat.module';
-// import { RoomModule } from './room/room.module';
-
-// import { TasksModule } from './tasks/task.module';
+import { HomeModule } from './routes/home/home.module';
 
 @Module({
   imports: [

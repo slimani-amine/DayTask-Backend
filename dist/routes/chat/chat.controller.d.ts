@@ -1,10 +1,10 @@
-import { ChatService } from './chat.service';
-import { CreateChatDto } from './dto/create-chat.dto';
-import { QueryChatDto } from './dto/query-chat.dto';
-import { Chat } from './domain/chat';
-import { UpdateChatDto } from './dto/update-chat.dto';
-import { User } from '../users/domain/user';
-import { InfinityPaginationResultType } from '../../utils/types/infinity-pagination-result.type';
+import { ChatService } from "./chat.service";
+import { CreateChatDto } from "./dto/create-chat.dto";
+import { QueryChatDto } from "./dto/query-chat.dto";
+import { Chat } from "./domain/chat";
+import { UpdateChatDto } from "./dto/update-chat.dto";
+import { User } from "../users/domain/user";
+import { InfinityPaginationResultType } from "../../utils/types/infinity-pagination-result.type";
 export declare class ChatController {
     private readonly chatService;
     constructor(chatService: ChatService);

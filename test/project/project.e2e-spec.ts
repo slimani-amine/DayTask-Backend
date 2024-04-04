@@ -1,12 +1,14 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
-import request from 'supertest';
+import request from "supertest";
 import { AppModule } from "src/app.module";
 import { CreateProjectDto } from "src/routes/projects/dto/create-project.dto";
 import { UpdateProjectDto } from "src/routes/projects/dto/update-project.dto";
+import { ADMIN_EMAIL, ADMIN_PASSWORD, APP_URL } from "test/utils/constants";
 
 describe("ProjectsController (e2e)", () => {
   let app: INestApplication;
+  let apiToken: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -19,6 +21,19 @@ describe("ProjectsController (e2e)", () => {
 
   afterAll(async () => {
     await app.close();
+  });
+
+  beforeAll(async () => {
+    const appUrl = APP_URL;
+    const adminEmail = ADMIN_EMAIL;
+    const adminPassword = ADMIN_PASSWORD;
+
+    await request(appUrl)
+      .post("/api/v1/auth/email/login")
+      .send({ email: adminEmail, password: adminPassword })
+      .then(({ body }) => {
+        apiToken = body.token;
+      });
   });
 
   const projectData: CreateProjectDto = {
@@ -34,6 +49,7 @@ describe("ProjectsController (e2e)", () => {
     const res = await request(app.getHttpServer())
       .post("/projects")
       .send(projectData)
+      .set("Authorization", apiToken)
       .expect(201);
 
     projectId = res.body.id;
@@ -46,6 +62,7 @@ describe("ProjectsController (e2e)", () => {
   it("should find a specific project", async () => {
     await request(app.getHttpServer())
       .get(`/projects/${projectId}`)
+      .set("Authorization", apiToken)
       .expect(200);
   });
 
@@ -60,12 +77,14 @@ describe("ProjectsController (e2e)", () => {
     await request(app.getHttpServer())
       .patch(`/projects/${projectId}`)
       .send(updateData)
+      .set("Authorization", apiToken)
       .expect(200);
   });
 
   it("should delete a project", async () => {
     await request(app.getHttpServer())
       .delete(`/projects/${projectId}`)
+      .set("Authorization", apiToken)
       .expect(200);
   });
 });

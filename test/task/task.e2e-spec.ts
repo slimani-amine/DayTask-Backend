@@ -4,9 +4,11 @@ import request from "supertest";
 import { AppModule } from "src/app.module";
 import { CreateTaskDto } from "src/routes/tasks/dto/create-task.dto";
 import { UpdateTaskDto } from "src/routes/tasks/dto/update-task.dto";
+import { APP_URL, ADMIN_EMAIL, ADMIN_PASSWORD } from "test/utils/constants";
 
 describe("TasksController (e2e)", () => {
   let app: INestApplication;
+  let apiToken: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -19,6 +21,19 @@ describe("TasksController (e2e)", () => {
 
   afterAll(async () => {
     await app.close();
+  });
+
+  beforeAll(async () => {
+    const appUrl = APP_URL;
+    const adminEmail = ADMIN_EMAIL;
+    const adminPassword = ADMIN_PASSWORD;
+
+    await request(appUrl)
+      .post("/api/v1/auth/email/login")
+      .send({ email: adminEmail, password: adminPassword })
+      .then(({ body }) => {
+        apiToken = body.token;
+      });
   });
 
   const taskData: CreateTaskDto = {
@@ -38,6 +53,7 @@ describe("TasksController (e2e)", () => {
     const res = await request(app.getHttpServer())
       .post("/tasks")
       .send(taskData)
+      .set("Authorization", `Bearer ${apiToken}`)
       .expect(201);
 
     taskId = res.body.id;
@@ -48,7 +64,10 @@ describe("TasksController (e2e)", () => {
   });
 
   it("should find a specific task", async () => {
-    await request(app.getHttpServer()).get(`/tasks/${taskId}`).expect(200);
+    await request(app.getHttpServer())
+      .get(`/tasks/${taskId}`)
+      .set("Authorization", `Bearer ${apiToken}`)
+      .expect(200);
   });
 
   it("should update a task", async () => {
@@ -66,10 +85,14 @@ describe("TasksController (e2e)", () => {
     await request(app.getHttpServer())
       .patch(`/tasks/${taskId}`)
       .send(updateData)
+      .set("Authorization", `Bearer ${apiToken}`)
       .expect(200);
   });
 
   it("should delete a task", async () => {
-    await request(app.getHttpServer()).delete(`/tasks/${taskId}`).expect(200);
+    await request(app.getHttpServer())
+      .delete(`/tasks/${taskId}`)
+      .set("Authorization", `Bearer ${apiToken}`)
+      .expect(200);
   });
 });

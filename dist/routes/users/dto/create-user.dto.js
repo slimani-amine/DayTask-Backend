@@ -12,10 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserDto = void 0;
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
-const lower_case_transformer_1 = require("../../../utils/transformers/lower-case.transformer");
 const role_dto_1 = require("../../roles/dto/role.dto");
 const status_dto_1 = require("../../../shared/statuses/dto/status.dto");
 const auth_providers_enum_1 = require("../../../auth/auth-providers.enum");
+const lower_case_transformer_1 = require("../../../utils/transformers/lower-case.transformer");
 class CreateUserDto {
 }
 exports.CreateUserDto = CreateUserDto;

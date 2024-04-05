@@ -1,5 +1,5 @@
 import { ConfigService } from '@nestjs/config';
-import { AllConfigType } from '../config/config.type';
+import { AllConfigType } from 'src/config/config.type';
 export declare class HomeService {
     private configService;
     constructor(configService: ConfigService<AllConfigType>);

@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthUpdateDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const file_dto_1 = require("../../routes/files/dto/file.dto");
+const file_dto_1 = require("../../files/dto/file.dto");
 class AuthUpdateDto {
 }
 exports.AuthUpdateDto = AuthUpdateDto;
@@ -22,15 +22,15 @@ __decorate([
     __metadata("design:type", Object)
 ], AuthUpdateDto.prototype, "photo", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ example: 'John' }),
+    (0, swagger_1.ApiPropertyOptional)({ example: "John" }),
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({ message: 'mustBeNotEmpty' }),
+    (0, class_validator_1.IsNotEmpty)({ message: "mustBeNotEmpty" }),
     __metadata("design:type", String)
 ], AuthUpdateDto.prototype, "firstName", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ example: 'Doe' }),
+    (0, swagger_1.ApiPropertyOptional)({ example: "Doe" }),
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({ message: 'mustBeNotEmpty' }),
+    (0, class_validator_1.IsNotEmpty)({ message: "mustBeNotEmpty" }),
     __metadata("design:type", String)
 ], AuthUpdateDto.prototype, "lastName", void 0);
 __decorate([
@@ -43,7 +43,7 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiPropertyOptional)(),
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({ message: 'mustBeNotEmpty' }),
+    (0, class_validator_1.IsNotEmpty)({ message: "mustBeNotEmpty" }),
     __metadata("design:type", String)
 ], AuthUpdateDto.prototype, "oldPassword", void 0);
 //# sourceMappingURL=auth-update.dto.js.map

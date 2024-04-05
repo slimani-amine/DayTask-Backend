@@ -14,9 +14,9 @@ const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
 const jwt_strategy_1 = require("./strategies/jwt.strategy");
 const anonymous_strategy_1 = require("./strategies/anonymous.strategy");
-const users_module_1 = require("../routes/users/users.module");
+const users_module_1 = require("../users/users.module");
 const mail_module_1 = require("../shared/services/mail/mail.module");
-const session_module_1 = require("../routes/session/session.module");
+const session_module_1 = require("../session/session.module");
 const jwt_refresh_strategy_1 = require("./strategies/jwt-refresh.strategy");
 let AuthModule = class AuthModule {
 };

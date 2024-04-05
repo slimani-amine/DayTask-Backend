@@ -37,8 +37,8 @@ async function bootstrap() {
   );
 
   const options = new DocumentBuilder()
-    .setTitle('API')
-    .setDescription('API docs')
+    .setTitle('DayTask API')
+    .setDescription('DayTask - Task Management API docs')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

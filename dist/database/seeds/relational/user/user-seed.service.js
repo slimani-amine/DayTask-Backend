@@ -21,8 +21,8 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const statuses_enum_1 = require("../../../../statuses/statuses.enum");
-const user_entity_1 = require("../../../../routes/users/infrastructure/persistence/relational/entities/user.entity");
-const roles_enum_1 = require("../../../../routes/roles/roles.enum");
+const user_entity_1 = require("../../../../users/infrastructure/persistence/relational/entities/user.entity");
+const roles_enum_1 = require("../../../../roles/roles.enum");
 let UserSeedService = class UserSeedService {
     constructor(repository) {
         this.repository = repository;
@@ -37,19 +37,19 @@ let UserSeedService = class UserSeedService {
         });
         if (!countAdmin) {
             const salt = await bcryptjs_1.default.genSalt();
-            const password = await bcryptjs_1.default.hash('secret', salt);
+            const password = await bcryptjs_1.default.hash("secret", salt);
             await this.repository.save(this.repository.create({
-                firstName: 'Super',
-                lastName: 'Admin',
-                email: 'admin@example.com',
+                firstName: "Super",
+                lastName: "Admin",
+                email: "admin@example.com",
                 password,
                 role: {
                     id: roles_enum_1.RoleEnum.admin,
-                    name: 'Admin',
+                    name: "Admin",
                 },
                 status: {
                     id: statuses_enum_1.StatusEnum.active,
-                    name: 'Active',
+                    name: "Active",
                 },
             }));
         }
@@ -62,19 +62,19 @@ let UserSeedService = class UserSeedService {
         });
         if (!countUser) {
             const salt = await bcryptjs_1.default.genSalt();
-            const password = await bcryptjs_1.default.hash('secret', salt);
+            const password = await bcryptjs_1.default.hash("secret", salt);
             await this.repository.save(this.repository.create({
-                firstName: 'John',
-                lastName: 'Doe',
-                email: 'john.doe@example.com',
+                firstName: "John",
+                lastName: "Doe",
+                email: "john.doe@example.com",
                 password,
                 role: {
                     id: roles_enum_1.RoleEnum.user,
-                    name: 'Admin',
+                    name: "Admin",
                 },
                 status: {
                     id: statuses_enum_1.StatusEnum.active,
-                    name: 'Active',
+                    name: "Active",
                 },
             }));
         }

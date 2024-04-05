@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidateData = void 0;
 const common_1 = require("@nestjs/common");
-const projects_service_1 = require("../../routes/projects/projects.service");
-const users_service_1 = require("../../routes/users/users.service");
+const projects_service_1 = require("../../projects/projects.service");
+const users_service_1 = require("../../users/users.service");
 let ValidateData = class ValidateData {
     constructor(usersService, projectsService) {
         this.usersService = usersService;
@@ -24,7 +24,7 @@ let ValidateData = class ValidateData {
     async vlaidateMembers(members) {
         const userIds = members.map((e) => e.id);
         if (new Set(userIds).size !== userIds.length) {
-            throw new common_1.BadRequestException('Members must be unique');
+            throw new common_1.BadRequestException("Members must be unique");
         }
         const usersPromises = members.map((e) => this.usersService.findOne({
             id: e.id,

@@ -1,20 +1,20 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, MinLength } from 'class-validator';
-import { FileDto } from 'src/routes/files/dto/file.dto';
+import { ApiPropertyOptional } from "@nestjs/swagger";
+import { IsNotEmpty, IsOptional, MinLength } from "class-validator";
+import { FileDto } from "src/files/dto/file.dto";
 
 export class AuthUpdateDto {
   @ApiPropertyOptional({ type: () => FileDto })
   @IsOptional()
   photo?: FileDto | null;
 
-  @ApiPropertyOptional({ example: 'John' })
+  @ApiPropertyOptional({ example: "John" })
   @IsOptional()
-  @IsNotEmpty({ message: 'mustBeNotEmpty' })
+  @IsNotEmpty({ message: "mustBeNotEmpty" })
   firstName?: string;
 
-  @ApiPropertyOptional({ example: 'Doe' })
+  @ApiPropertyOptional({ example: "Doe" })
   @IsOptional()
-  @IsNotEmpty({ message: 'mustBeNotEmpty' })
+  @IsNotEmpty({ message: "mustBeNotEmpty" })
   lastName?: string;
 
   @ApiPropertyOptional()
@@ -25,6 +25,6 @@ export class AuthUpdateDto {
 
   @ApiPropertyOptional()
   @IsOptional()
-  @IsNotEmpty({ message: 'mustBeNotEmpty' })
+  @IsNotEmpty({ message: "mustBeNotEmpty" })
   oldPassword?: string;
 }

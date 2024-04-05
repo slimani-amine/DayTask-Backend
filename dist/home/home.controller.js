@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomeController = void 0;
 const common_1 = require("@nestjs/common");
-const swagger_1 = require("@nestjs/swagger");
 const home_service_1 = require("./home.service");
 let HomeController = class HomeController {
     constructor(service) {
@@ -29,8 +28,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], HomeController.prototype, "appInfo", null);
 exports.HomeController = HomeController = __decorate([
-    (0, swagger_1.ApiTags)('Home'),
-    (0, common_1.Controller)(),
+    (0, common_1.Controller)({
+        path: 'info',
+        version: '1',
+    }),
     __metadata("design:paramtypes", [home_service_1.HomeService])
 ], HomeController);
 //# sourceMappingURL=home.controller.js.map

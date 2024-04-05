@@ -2,8 +2,8 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import request from "supertest";
 import { AppModule } from "src/app.module";
-import { CreateTaskDto } from "src/routes/tasks/dto/create-task.dto";
-import { UpdateTaskDto } from "src/routes/tasks/dto/update-task.dto";
+import { CreateTaskDto } from "src/tasks/dto/create-task.dto";
+import { UpdateTaskDto } from "src/tasks/dto/update-task.dto";
 import { APP_URL, ADMIN_EMAIL, ADMIN_PASSWORD } from "test/utils/constants";
 
 describe("TasksController (e2e)", () => {

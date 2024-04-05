@@ -10,7 +10,7 @@ exports.RoleSeedModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const role_seed_service_1 = require("./role-seed.service");
-const role_entity_1 = require("../../../../routes/roles/infrastructure/persistence/relational/entities/role.entity");
+const role_entity_1 = require("../../../../roles/infrastructure/persistence/relational/entities/role.entity");
 let RoleSeedModule = class RoleSeedModule {
 };
 exports.RoleSeedModule = RoleSeedModule;

@@ -1,4 +1,4 @@
-import { User } from 'src/routes/users/domain/user';
+import { User } from "src/users/domain/user";
 export type LoginResponseType = Readonly<{
     token: string;
     refreshToken: string;
@@ -6,10 +6,10 @@ export type LoginResponseType = Readonly<{
     user: User;
 }>;
 export type SuccessResponseType = Readonly<{
-    status: 'success';
+    status: "success";
     message?: string;
 }>;
 export type ErrorResponseType = Readonly<{
-    status: 'error';
+    status: "error";
     message?: string;
 }>;

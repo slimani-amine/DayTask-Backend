@@ -1,4 +1,4 @@
-import { FileDto } from 'src/routes/files/dto/file.dto';
+import { FileDto } from "src/files/dto/file.dto";
 export declare class AuthUpdateDto {
     photo?: FileDto | null;
     firstName?: string;

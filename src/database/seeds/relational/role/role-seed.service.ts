@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { RoleEnum } from '../../../../routes/roles/roles.enum';
-import { RoleEntity } from '../../../../routes/roles/infrastructure/persistence/relational/entities/role.entity';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { RoleEnum } from "../../../../roles/roles.enum";
+import { RoleEntity } from "../../../../roles/infrastructure/persistence/relational/entities/role.entity";
 
 @Injectable()
 export class RoleSeedService {
   constructor(
     @InjectRepository(RoleEntity)
-    private repository: Repository<RoleEntity>,
+    private repository: Repository<RoleEntity>
   ) {}
 
   async run() {
@@ -22,8 +22,8 @@ export class RoleSeedService {
       await this.repository.save(
         this.repository.create({
           id: RoleEnum.user,
-          name: 'User',
-        }),
+          name: "User",
+        })
       );
     }
 
@@ -37,8 +37,8 @@ export class RoleSeedService {
       await this.repository.save(
         this.repository.create({
           id: RoleEnum.admin,
-          name: 'Admin',
-        }),
+          name: "Admin",
+        })
       );
     }
   }

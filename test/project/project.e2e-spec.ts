@@ -2,8 +2,8 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import request from "supertest";
 import { AppModule } from "src/app.module";
-import { CreateProjectDto } from "src/routes/projects/dto/create-project.dto";
-import { UpdateProjectDto } from "src/routes/projects/dto/update-project.dto";
+import { CreateProjectDto } from "src/projects/dto/create-project.dto";
+import { UpdateProjectDto } from "src/projects/dto/update-project.dto";
 import { ADMIN_EMAIL, ADMIN_PASSWORD, APP_URL } from "test/utils/constants";
 
 describe("ProjectsController (e2e)", () => {

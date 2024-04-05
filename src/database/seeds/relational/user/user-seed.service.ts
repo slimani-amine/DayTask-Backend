@@ -1,17 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 
-import { Repository } from 'typeorm';
-import bcrypt from 'bcryptjs';
-import { StatusEnum } from '../../../../statuses/statuses.enum';
-import { UserEntity } from '../../../../routes/users/infrastructure/persistence/relational/entities/user.entity';
-import { RoleEnum } from '../../../../routes/roles/roles.enum';
+import { Repository } from "typeorm";
+import bcrypt from "bcryptjs";
+import { StatusEnum } from "../../../../statuses/statuses.enum";
+import { UserEntity } from "../../../../users/infrastructure/persistence/relational/entities/user.entity";
+import { RoleEnum } from "../../../../roles/roles.enum";
 
 @Injectable()
 export class UserSeedService {
   constructor(
     @InjectRepository(UserEntity)
-    private repository: Repository<UserEntity>,
+    private repository: Repository<UserEntity>
   ) {}
 
   async run() {
@@ -25,23 +25,23 @@ export class UserSeedService {
 
     if (!countAdmin) {
       const salt = await bcrypt.genSalt();
-      const password = await bcrypt.hash('secret', salt);
+      const password = await bcrypt.hash("secret", salt);
 
       await this.repository.save(
         this.repository.create({
-          firstName: 'Super',
-          lastName: 'Admin',
-          email: 'admin@example.com',
+          firstName: "Super",
+          lastName: "Admin",
+          email: "admin@example.com",
           password,
           role: {
             id: RoleEnum.admin,
-            name: 'Admin',
+            name: "Admin",
           },
           status: {
             id: StatusEnum.active,
-            name: 'Active',
+            name: "Active",
           },
-        }),
+        })
       );
     }
 
@@ -55,23 +55,23 @@ export class UserSeedService {
 
     if (!countUser) {
       const salt = await bcrypt.genSalt();
-      const password = await bcrypt.hash('secret', salt);
+      const password = await bcrypt.hash("secret", salt);
 
       await this.repository.save(
         this.repository.create({
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@example.com',
+          firstName: "John",
+          lastName: "Doe",
+          email: "john.doe@example.com",
           password,
           role: {
             id: RoleEnum.user,
-            name: 'Admin',
+            name: "Admin",
           },
           status: {
             id: StatusEnum.active,
-            name: 'Active',
+            name: "Active",
           },
-        }),
+        })
       );
     }
   }

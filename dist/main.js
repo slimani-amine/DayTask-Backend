@@ -26,8 +26,8 @@ async function bootstrap() {
     app.useGlobalPipes(new common_1.ValidationPipe(validation_options_1.default));
     app.useGlobalInterceptors(new serializer_interceptor_1.ResolvePromisesInterceptor(), new common_1.ClassSerializerInterceptor(app.get(core_1.Reflector)));
     const options = new swagger_1.DocumentBuilder()
-        .setTitle('API')
-        .setDescription('API docs')
+        .setTitle('DayTask API')
+        .setDescription('DayTask - Task Management API docs')
         .setVersion('1.0')
         .addBearerAuth()
         .build();

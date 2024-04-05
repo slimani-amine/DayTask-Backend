@@ -7,7 +7,7 @@ import { AuthUpdateDto } from "./dto/auth-update.dto";
 import { AuthRegisterLoginDto } from "./dto/auth-register-login.dto";
 import { LoginResponseType, SuccessResponseType } from "./types/response.type";
 import { NullableType } from "../utils/types/nullable.type";
-import { User } from "src/routes/users/domain/user";
+import { User } from "src/users/domain/user";
 export declare class AuthController {
     private readonly service;
     constructor(service: AuthService);

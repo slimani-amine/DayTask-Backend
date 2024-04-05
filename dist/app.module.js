@@ -26,18 +26,18 @@ const typeorm_config_service_1 = require("./database/typeorm-config.service");
 const mail_module_1 = require("./mail/mail.module");
 const typeorm_2 = require("typeorm");
 const mailer_module_1 = require("./mailer/mailer.module");
-const file_config_1 = __importDefault(require("./routes/files/config/file.config"));
-const users_module_1 = require("./routes/users/users.module");
-const files_module_1 = require("./routes/files/files.module");
-const session_module_1 = require("./routes/session/session.module");
-const chat_module_1 = require("./routes/chat/chat.module");
-const projects_module_1 = require("./routes/projects/projects.module");
-const tasks_module_1 = require("./routes/tasks/tasks.module");
-const message_module_1 = require("./routes/messages/message.module");
-const notifications_module_1 = require("./routes/notifications/notifications.module");
-const messages_socket_module_1 = require("./routes/messages/socket/messages-socket.module");
-const notifications_socket_module_1 = require("./routes/notifications/socket/notifications-socket.module");
-const home_module_1 = require("./routes/home/home.module");
+const file_config_1 = __importDefault(require("./files/config/file.config"));
+const users_module_1 = require("./users/users.module");
+const files_module_1 = require("./files/files.module");
+const session_module_1 = require("./session/session.module");
+const chat_module_1 = require("./chat/chat.module");
+const projects_module_1 = require("./projects/projects.module");
+const tasks_module_1 = require("./tasks/tasks.module");
+const message_module_1 = require("./messages/message.module");
+const notifications_module_1 = require("./notifications/notifications.module");
+const messages_socket_module_1 = require("./messages/socket/messages-socket.module");
+const notifications_socket_module_1 = require("./notifications/socket/notifications-socket.module");
+const home_module_1 = require("./home/home.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -54,7 +54,7 @@ exports.AppModule = AppModule = __decorate([
                     file_config_1.default,
                     google_config_1.default,
                 ],
-                envFilePath: ['.env'],
+                envFilePath: [".env"],
             }),
             typeorm_1.TypeOrmModule.forRootAsync({
                 useClass: typeorm_config_service_1.TypeOrmConfigService,
@@ -64,17 +64,17 @@ exports.AppModule = AppModule = __decorate([
             }),
             i18n_module_1.I18nModule.forRootAsync({
                 useFactory: (configService) => ({
-                    fallbackLanguage: configService.getOrThrow('app.fallbackLanguage', {
+                    fallbackLanguage: configService.getOrThrow("app.fallbackLanguage", {
                         infer: true,
                     }),
-                    loaderOptions: { path: path_1.default.join(__dirname, '/i18n/'), watch: true },
+                    loaderOptions: { path: path_1.default.join(__dirname, "/i18n/"), watch: true },
                 }),
                 resolvers: [
                     {
                         use: nestjs_i18n_1.HeaderResolver,
                         useFactory: (configService) => {
                             return [
-                                configService.get('app.headerLanguage', {
+                                configService.get("app.headerLanguage", {
                                     infer: true,
                                 }),
                             ];

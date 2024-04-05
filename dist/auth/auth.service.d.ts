@@ -1,18 +1,18 @@
-import { JwtService } from '@nestjs/jwt';
-import { AuthEmailLoginDto } from './dto/auth-email-login.dto';
-import { AuthUpdateDto } from './dto/auth-update.dto';
-import { SocialInterface } from '../shared/social/interfaces/social.interface';
-import { AuthRegisterLoginDto } from './dto/auth-register-login.dto';
-import { MailService } from 'src/shared/services/mail/mail.service';
-import { NullableType } from '../utils/types/nullable.type';
-import { LoginResponseType } from './types/response.type';
-import { ConfigService } from '@nestjs/config';
-import { AllConfigType } from 'src/config/config.type';
-import { JwtRefreshPayloadType } from './strategies/types/jwt-refresh-payload.type';
-import { JwtPayloadType } from './strategies/types/jwt-payload.type';
-import { User } from 'src/routes/users/domain/user';
-import { UsersService } from 'src/routes/users/users.service';
-import { SessionService } from 'src/routes/session/session.service';
+import { JwtService } from "@nestjs/jwt";
+import { AuthEmailLoginDto } from "./dto/auth-email-login.dto";
+import { AuthUpdateDto } from "./dto/auth-update.dto";
+import { SocialInterface } from "../shared/social/interfaces/social.interface";
+import { AuthRegisterLoginDto } from "./dto/auth-register-login.dto";
+import { MailService } from "src/shared/services/mail/mail.service";
+import { NullableType } from "../utils/types/nullable.type";
+import { LoginResponseType } from "./types/response.type";
+import { ConfigService } from "@nestjs/config";
+import { AllConfigType } from "src/config/config.type";
+import { JwtRefreshPayloadType } from "./strategies/types/jwt-refresh-payload.type";
+import { JwtPayloadType } from "./strategies/types/jwt-payload.type";
+import { User } from "src/users/domain/user";
+import { UsersService } from "src/users/users.service";
+import { SessionService } from "src/session/session.service";
 export declare class AuthService {
     private jwtService;
     private usersService;
@@ -28,8 +28,8 @@ export declare class AuthService {
     resetPassword(hash: string, password: string): Promise<void>;
     me(userJwtPayload: JwtPayloadType): Promise<NullableType<User>>;
     update(userJwtPayload: JwtPayloadType, userDto: AuthUpdateDto): Promise<NullableType<User>>;
-    refreshToken(data: Pick<JwtRefreshPayloadType, 'sessionId' | 'hash'>): Promise<Omit<LoginResponseType, 'user'>>;
+    refreshToken(data: Pick<JwtRefreshPayloadType, "sessionId" | "hash">): Promise<Omit<LoginResponseType, "user">>;
     softDelete(user: User): Promise<void>;
-    logout(data: Pick<JwtRefreshPayloadType, 'sessionId'>): Promise<void>;
+    logout(data: Pick<JwtRefreshPayloadType, "sessionId">): Promise<void>;
     private getTokensData;
 }

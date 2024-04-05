@@ -14,7 +14,7 @@ const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
 const lower_case_transformer_1 = require("../../utils/transformers/lower-case.transformer");
-const roles_enum_1 = require("../../routes/roles/roles.enum");
+const roles_enum_1 = require("../../roles/roles.enum");
 class AuthRegisterLoginDto {
     constructor() {
         this.roleId = roles_enum_1.RoleEnum.user;
@@ -22,7 +22,7 @@ class AuthRegisterLoginDto {
 }
 exports.AuthRegisterLoginDto = AuthRegisterLoginDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'test1@example.com' }),
+    (0, swagger_1.ApiProperty)({ example: "test1@example.com" }),
     (0, class_transformer_1.Transform)(lower_case_transformer_1.lowerCaseTransformer),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
@@ -33,17 +33,17 @@ __decorate([
     __metadata("design:type", String)
 ], AuthRegisterLoginDto.prototype, "password", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'John' }),
+    (0, swagger_1.ApiProperty)({ example: "John" }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AuthRegisterLoginDto.prototype, "firstName", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Doe' }),
+    (0, swagger_1.ApiProperty)({ example: "Doe" }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AuthRegisterLoginDto.prototype, "lastName", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '1' }),
+    (0, swagger_1.ApiProperty)({ example: "1" }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], AuthRegisterLoginDto.prototype, "roleId", void 0);

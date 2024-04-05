@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { UserSeedService } from './user-seed.service';
-import { UserEntity } from '../../../../routes/users/infrastructure/persistence/relational/entities/user.entity';
+import { UserSeedService } from "./user-seed.service";
+import { UserEntity } from "../../../../users/infrastructure/persistence/relational/entities/user.entity";
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserEntity])],

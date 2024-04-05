@@ -22,7 +22,7 @@ import { LoginResponseType, SuccessResponseType } from "./types/response.type";
 import { NullableType } from "../utils/types/nullable.type";
 import { successResponse } from "./constants/response";
 import { User as ReqUser } from "src/shared/decorators/user.decorator";
-import { User } from "src/routes/users/domain/user";
+import { User } from "src/users/domain/user";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Auth")

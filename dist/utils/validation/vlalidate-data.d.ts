@@ -1,6 +1,6 @@
-import { ProjectsService } from 'src/routes/projects/projects.service';
-import { User } from 'src/routes/users/domain/user';
-import { UsersService } from 'src/routes/users/users.service';
+import { ProjectsService } from "src/projects/projects.service";
+import { User } from "src/users/domain/user";
+import { UsersService } from "src/users/users.service";
 export declare class ValidateData {
     private readonly usersService;
     private readonly projectsService;
